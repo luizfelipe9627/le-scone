@@ -1,0 +1,26 @@
+{
+  "name": "le-scone",
+  "version": "1.0.0",
+  "description": "O Le Scone é um projeto de um site de um restaurante fictício, desenvolvido junto ao curso de CSS com SASS. O projeto foi desenvolvido com HTML, SASS e JavaScript, utilizando o Gulp para automatizar o processo de desenvolvimento.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp",
+    "build": "gulp build"
+  },
+  "keywords": [],
+  "author": "Luiz Felipe Silva",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.7",
+    "browser-sync": "^3.0.2",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^7.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-watch": "^5.0.1",
+    "sass": "^1.69.6"
+  }
+}

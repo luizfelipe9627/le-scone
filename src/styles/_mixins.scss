@@ -1,0 +1,42 @@
+// Está criando uma função chamada em, que recebe dois parâmetros, o primeiro é o $px, que é o valor em pixels que vai ser convertido para em e o segundo é o $context, que é o valor em pixels que vai ser usado como base para a conversão.
+@function em($px, $context: 16px) {
+  // Faz um cálculo dividindo o valor da variável $px pelo valor da variável $context e multiplicando o resultado por 1em e retorna o resultado.
+  @return calc($px / $context) * 1em;
+}
+
+// Está criando um mixin chamado type-1, que recebe um parâmetro chamado $size, esse mixin vai ser responsável por definir a fonte, o tamanho da fonte e o tamanho da linha.
+@mixin type-1($size) {
+  font-family: $font-1; // Está colocando o valor da variável $font-1 como font-family.
+  // Se o $size for igual a 18, então vai executar o código dentro dele.
+  @if $size == 18px {
+    font-size: em(18px);
+    // Está chamando a função em e passando o valor 30px como valor em pixels e o valor 18 como valor em pixels que vai ser usado como base para a conversão, pois o tamanho da fonte é 18px.
+    line-height: em(30px, 18px);
+  }
+}
+
+@mixin type-2($size) {
+  font-family: $font-2; // Está colocando o valor da variável $font-2 como font-family.
+  // Se o $size for igual a 18, então vai executar o código dentro dele.
+  @if $size == 18px {
+    font-size: em(18px);
+    // Está chamando a função em e passando o valor 30px como valor em pixels e o valor 18 como valor em pixels que vai ser usado como base para a conversão, pois o tamanho da fonte é 18px.
+    line-height: em(30px, 18px);
+  }
+  // Se não, se o $size for igual a 24, então vai executar o código dentro dele.
+  @else if $size == 24px {
+    font-size: em(24px);
+    // Está chamando a função em e passando o valor 30px como valor em pixels e o valor 24 como valor em pixels que vai ser usado como base para a conversão, pois o tamanho da fonte é 24px.
+    line-height: em(30px, 24px);
+  }
+}
+
+// Está criando um mixin chamado box-shadow, que recebe um parâmetro chamado $shadow, esse mixin vai ser responsável por definir o box-shadow, com os prefixos -webkit-box-shadow e -moz-box-shadow. O operador ... é chamado de rest operator, ele permite que você passe mais de um valor para o parâmetro $shadow.
+@mixin box-shadow($shadow...) {
+  // Está colocando o valor da variável $shadow como box-shadow.
+  box-shadow: $shadow;
+  // Está colocando o valor da variável $shadow como -webkit-box-shadow.
+  -webkit-box-shadow: $shadow;
+  // Está colocando o valor da variável $shadow como -moz-box-shadow.
+  -moz-box-shadow: $shadow;
+}
