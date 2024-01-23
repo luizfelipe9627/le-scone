@@ -64,7 +64,6 @@ $small-device: 480px;
 
 @mixin grid-structure {
   display: inline-block;
-  //float: left;
   min-height: 1px;
   // Faz um cálculo dividindo o valor da variável $gutter por 2 e colocando o resultado na propriedade margin-left.
   margin-left: calc($gutter / 2);
