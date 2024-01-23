@@ -1,76 +1,52 @@
 *,
 *::after,
 *::before {
-  box-sizing: border-box; // O box-sizing: border-box; faz com que o padding e a borda do elemento não sejam contabilizados no cálculo do width e height.
+  box-sizing: border-box;
 }
 
-// Está criando as variáveis chamadas $columns, $gutter, $large-device, $medium-device e $small-device.
 $columns: 12;
 $gutter: 20px;
 $large-device: 1200px;
 $medium-device: 760px;
 $small-device: 480px;
 
-// Está criando um mixin(que é um bloco de código que pode ser reutilizado em outros lugares) chamado device que recebe um parâmetro chamado $type.
 @mixin device($type) {
-  // Se o $type for igual a large, então vai executar o código abaixo.
   @if $type == large {
-    // Está criando uma media query que vai ser executada quando a largura da tela for maior ou igual a 1200px.
     @media (min-width: $large-device) {
-      @content; // O @content vai fazer com que o conteúdo que estiver dentro do mixin seja colocado no lugar do @content.
+      @content;
     }
-  }
-  // Se não, se o $type for igual a medium, então vai executar o código abaixo.
-  @else if $type == medium {
-    // Está criando uma media query que vai ser executada quando a largura da tela for maior ou igual a 760px e menor ou igual a 1199px.
+  } @else if $type == medium {
     @media (min-width: $medium-device) and (max-width: #{$large-device - 1}) {
-      @content; // O @content vai fazer com que o conteúdo que estiver dentro do mixin seja colocado no lugar do @content.
+      @content;
     }
-  }
-  // Se não, se o $type for igual a small, então vai executar o código abaixo.
-  @else if $type == small {
-    // Está criando uma media query que vai ser executada quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
+  } @else if $type == small {
     @media (max-width: #{$medium-device - 1}) {
-      @content; // O @content vai fazer com que o conteúdo que estiver dentro do mixin seja colocado no lugar do @content.
+      @content;
     }
   }
 }
 
-// Criado uma função chamada grid que recebe dois parâmetros chamados $col, responsável por receber o número de colunas que o elemento vai ocupar, e $offset, responsável por receber o número de colunas que o elemento vai ficar afastado da esquerda.
 @function grid($col, $offset: false) {
-  $width: calc($col / $columns) * 100%; // Faz um cálculo dividindo a quantidade de colunas que o elemento vai ocupar pela quantidade total de colunas e multiplicando o resultado por 100% para saber a porcentagem que o elemento vai ocupar, armazenando o resultado na variável $width.
-
-  // Faz um cálculo subtraindo o valor da variável width pelo valor da variável $gutter, armazenando o resultado na variável $result. O #{} serve para interpolar(pegar o valor de uma variável e colocar dentro de uma string) o valor da variável dentro da string.
+  $width: calc($col / $columns) * 100%;
   $result: calc(#{$width} - #{$gutter});
-
-  // Se o $offset for igual a offset, então vai executar o código dentro do if.
   @if $offset == offset {
-    // Faz um cálculo dividindo o valor da variável $gutter por 2 e colocando o resultado na variável $gutter.
     $gutter: calc($gutter / 2);
-    // Faz um cálculo somando o valor da variável width pelo valor da variável $gutter, armazenando o resultado na variável $result. O #{} serve para interpolar(pegar o valor de uma variável e colocar dentro de uma string) o valor da variável dentro da string.
     $result: calc(#{$width} + #{$gutter});
   }
-  @return $result; // Está retornando o valor da variável $result, que é a porcentagem que o elemento vai ocupar.
+  @return $result;
 }
 
-// O for está recebendo um parâmetro/variável chamado $i, que vai começar com o valor 1 e vai até o valor da variável $columns, que é 12, então o for vai executar 12 vezes.
 @for $i from 1 through $columns {
-  // Está criando uma classe a cada loop com o nome grid e o valor da variável $i, que vai de 1 até 12.
   .grid-#{$i} {
-    // Está chamando a função grid e passando o valor da variável $i como parâmetro.
     width: grid($i);
   }
 }
 
 @mixin grid-structure {
   display: inline-block;
-  //float: left;
   min-height: 1px;
-  // Faz um cálculo dividindo o valor da variável $gutter por 2 e colocando o resultado na propriedade margin-left.
   margin-left: calc($gutter / 2);
-  // Faz um cálculo dividindo o valor da variável $gutter por 2 e colocando o resultado na propriedade margin-right.
   margin-right: calc($gutter / 2);
-  // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
   @include device(small) {
     width: 100%;
     margin-left: 0;
@@ -81,58 +57,45 @@ $small-device: 480px;
   }
 }
 
-// Para cada elemento que tiver a classe que começa com grid-, vai passar as propriedades que estão dentro do mixin grid-structure.
 [class^="grid-"] {
-  @include grid-structure; // Está chamando o mixin grid-structure, fazendo com que as propriedades que estão dentro do mixin sejam colocadas no lugar do @include grid-structure.
+  @include grid-structure;
 }
 
-// O for está recebendo um parâmetro/variável chamado $i, que vai começar com o valor 1 e vai até o valor da variável $columns, que é 12, então o for vai executar 12 vezes.
 @for $i from 1 through $columns {
-  // Está criando uma classe a cada loop com o nome offset e o valor da variável $i, que vai de 1 até 12.
   .offset-#{$i} {
-    // Está chamando a função grid e passando como parâmetro o valor da variável $i que é o contador do loop e a palavra offset, que faz com que o elemento fique afastado da esquerda.
     margin-left: grid($i, offset);
-    @extend %offset; // Está herdando as propriedades do seletor de placeholder %offset.
+    @extend %offset;
   }
 }
 
-// O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
 @include device(small) {
-  // O % é um seletor de placeholder, que é um seletor que não é compilado para o css, mas que pode ser usado para herdar propriedades e ai sim ser compilado para o css.
   %offset {
     margin-left: 0;
   }
 }
 
 @mixin container {
-  max-width: $large-device; // Está pegando o valor da variável $large-device e colocando na propriedade max-width.
+  max-width: $large-device;
   margin: 0 auto;
-  position: relative; // Está colocando a propriedade position com o valor relative, para que quando for usar o position absolute dentro do container, o position absolute fique relativo ao container.
-  // Está chamando o mixin device e passando como parâmetro a palavra large, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 1200px.
+  position: relative;
   @include device(medium) {
-    max-width: $medium-device; // Está pegando o valor da variável $medium-device e colocando na propriedade max-width.
+    max-width: $medium-device;
   }
-  // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
   @include device(small) {
-    max-width: $small-device; // Está pegando o valor da variável $small-device e colocando na propriedade max-width.
-    // Faz um cálculo dividindo o valor da variável $gutter por 2 e colocando o resultado na propriedade padding-left.
+    max-width: $small-device;
     padding-left: calc($gutter / 2);
-    // Faz um cálculo dividindo o valor da variável $gutter por 2 e colocando o resultado na propriedade padding-right.
     padding-right: calc($gutter / 2);
   }
 }
 
 .container {
-  @include container; // Está chamando o mixin container, fazendo com que as propriedades que estão dentro do mixin sejam colocadas no lugar do @include container.
+  @include container;
 }
 
 @mixin row {
   position: relative;
-  // Faz um cálculo dividindo o valor da variável $gutter por 2 e colocando o resultado negativado(para negativar um valor é so subtratir 1 e multiplicar pelo valor) na propriedade margin-left.
   margin-left: calc(-1 * $gutter / 2);
-  // Faz um cálculo dividindo o valor da variável $gutter por 2 e colocando o resultado negativado(para negativar um valor é so subtratir 1 e multiplicar pelo valor) na propriedade margin-right.
   margin-right: calc(-1 * $gutter / 2);
-  // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
   @include device(small) {
     margin-left: 0;
     margin-right: 0;
@@ -140,5 +103,5 @@ $small-device: 480px;
 }
 
 .row {
-  @include row; // Está chamando o mixin row, fazendo com que as propriedades que estão dentro do mixin sejam colocadas no lugar do @include row.
+  @include row;
 }

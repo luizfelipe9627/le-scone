@@ -1,7 +1,6 @@
 .menu {
   margin: 120px auto;
   display: flex;
-  // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
   @include device(small) {
     margin: 60px auto;
     flex-direction: column;
@@ -11,24 +10,20 @@
 .menu-item {
   margin-bottom: 60px;
   h2 {
-    // O include está chamando o mixin type-1 e passando como parâmetro o valor 24, que faz com que o código dentro do mixin seja executado com a font-size de 24px.
     @include type-2(24px);
     margin-bottom: 1em;
   }
   li {
-    // O include está chamando o mixin type-1 e passando como parâmetro o valor 18, que faz com que o código dentro do mixin seja executado com a font-size de 18px.
     @include type-1(18px);
-    // Está chamando a função em e passando o valor 35px como valor em pixels e o valor 18 como valor em pixels que vai ser usado como base para a conversão, pois o tamanho da fonte é 18px.
     line-height: em(35px, 18px);
     span {
-      font-family: $font-2; // Está colocando o valor da variável $font-2 como font-family.
-      color: $dark-beige; // Está colocando o valor da variável $dark-beige como cor do texto.
+      font-family: $font-2;
+      color: $dark-beige;
       display: inline-block;
       width: 70px;
       text-align: right;
       margin: 0 10px 0 -80px;
       font-weight: bold;
-      // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
       @include device(small) {
         width: auto;
         margin: 0 10px 0 0;
@@ -37,15 +32,13 @@
   }
   img {
     border-radius: 50%;
-    border: 10px solid $medium-beige; // Está colocando o valor da variável $medium-beige como cor da borda.
+    border: 10px solid $medium-beige;
     position: absolute;
     right: 0;
     margin-top: 50px;
-    // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 1200px.
     @include device(large) {
       right: 120px;
     }
-    // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
     @include device(small) {
       width: 120px;
       margin-top: 0;

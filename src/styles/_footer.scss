@@ -1,11 +1,9 @@
 footer {
   padding: 20px 0;
-  background-color: $gray; // Está colocando o valor da variável $gray como cor de fundo.
-  // Está chamando o mixin box-shadow e passando como parâmetro os valores 0 0 10px 0 $gray.
+  background-color: $gray;
   @include box-shadow(0 0 0 10px $gray);
   p {
-    color: $light-beige; // Está colocando o valor da variável $light-beige como cor do texto.
-    // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
+    color: $light-beige;
     @include device(small) {
       text-align: center;
     }
@@ -14,13 +12,11 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
     @include device(small) {
       flex-direction: column;
     }
   }
   img {
-    // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
     @include device(small) {
       margin: 20px auto;
     }

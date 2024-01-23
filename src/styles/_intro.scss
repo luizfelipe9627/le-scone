@@ -2,7 +2,6 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 60px;
-  // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
   @include device(small) {
     margin-top: 20px;
   }
@@ -14,20 +13,19 @@
 }
 
 .intro-info {
-  border-right: 2px solid $gray; // Está sendo usado o valor da variável $gray.
+  border-right: 2px solid $gray;
   max-width: 320px;
   p {
     padding-top: 10px;
     &:first-child {
-      border-bottom: 2px solid $gray; // Está sendo usado o valor da variável $gray.
+      border-bottom: 2px solid $gray;
       padding-bottom: 10px;
     }
   }
 }
 
 .intro-tel {
-  color: $dark-beige; // Está sendo usado o valor da variável $dark-beige.
-  // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
+  color: $dark-beige;
   @include device(small) {
     margin-bottom: 40px;
   }
@@ -37,14 +35,12 @@
     margin-top: 200px;
     font-size: 220px;
     letter-spacing: -90px;
-    color: $gray; // Está sendo usado o valor da variável $gray.
-    // O include está chamando o mixin device e passando como parâmetro a palavra medium, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 760px.
+    color: $gray;
     @include device(medium) {
       margin-top: 80px;
       font-size: 160px;
       letter-spacing: -70px;
     }
-    // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
     @include device(small) {
       display: none;
     }
@@ -56,11 +52,11 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: $green; // Está sendo usado o valor da variável $green.
+  background-color: $green;
   margin-left: 20px;
 }
 
 .intro-img {
-  border: 10px solid $medium-beige; // Está sendo usado o valor da variável $medium-beige.
+  border: 10px solid $medium-beige;
   width: 100%;
 }

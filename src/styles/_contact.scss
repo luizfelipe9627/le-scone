@@ -1,7 +1,6 @@
 .contact {
   margin: 120px auto;
   display: flex;
-  // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
   @include device(small) {
     margin: 60px auto;
     flex-direction: column;
@@ -10,25 +9,23 @@
 
 .contact form {
   label {
-    // Está chamando o mixin type-2 e passando como parâmetro o valor 18, que faz com que o código dentro do mixin seja executado com a font-size de 18px.
     @include type-2(18px);
     display: block;
   }
   input[type="text"],
   textarea {
-    // Está chamando o mixin type-1 e passando como parâmetro o valor 18, que faz com que o código dentro do mixin seja executado com a font-size de 18px.
     @include type-1(18px);
-    color: $gray; // Está colocando o valor da variável $gray como cor do texto.
+    color: $gray;
     width: 100%;
     padding: 0 5px;
     height: 40px;
-    border: 2px solid $dark-beige; // Está colocando o valor da variável $dark-beige como cor da borda.
+    border: 2px solid $dark-beige;
     background-color: transparent;
     margin-bottom: 1em;
     &:hover,
     &:focus {
       outline: none;
-      border-color: $medium-beige; // Está colocando o valor da variável $medium-beige como cor da borda.
+      border-color: $medium-beige;
     }
   }
   textarea {
@@ -37,20 +34,17 @@
 }
 
 input[type="button"] {
-  // Está chamando o mixin type-1 e passando como parâmetro o valor 18, que faz com que o código dentro do mixin seja executado com a font-size de 18px.
   @include type-1(18px);
   cursor: pointer;
-  color: $dark-beige; // Está colocando o valor da variável $dark-beige como cor do texto.
+  color: $dark-beige;
   text-transform: uppercase;
-  border: 2px solid $dark-beige; // Está colocando o valor da variável $dark-beige como cor da borda.
+  border: 2px solid $dark-beige;
   background-color: transparent;
   width: 200px;
   padding-top: 5px;
-  // Está chamando o mixin box-shadow e passando como parâmetro os valores 5px 5px 0 -2px $medium-beige e 5px 5px 0 0 $dark-beige.
   @include box-shadow(5px 5px 0 -2px $medium-beige, 5px 5px 0 0 $dark-beige);
   transition: 0.3s;
   &:hover {
-    // Está chamando o mixin box-shadow e passando como parâmetro os valores 3px 3px 0 -2px $dark-beige e 3px 3px 0 0 $medium-beige.
     @include box-shadow(3px 3px 0 -2px $dark-beige, 3px 3px 0 0 $medium-beige);
   }
 }
@@ -58,13 +52,12 @@ input[type="button"] {
 .contact-info {
   display: inline-block;
   flex-direction: column;
-  color: $dark-beige; // Está colocando o valor da variável $dark-beige como cor do texto.
+  color: $dark-beige;
   margin: 2em 0 3em 0;
-  // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 1200px.
   @include device(large) {
     display: block;
     flex-direction: column;
-    color: $dark-beige; // Está colocando o valor da variável $dark-beige como cor do texto.
+    color: $dark-beige;
     text-align: right;
     margin-top: -3em;
   }
@@ -72,7 +65,6 @@ input[type="button"] {
 
 .contact-map {
   display: block;
-  // Está chamando o mixin box-shadow e passando como parâmetro os valores 0 0 0 10px $medium-beige.
   @include box-shadow(0 0 0 10px $medium-beige);
   img {
     width: 100%;

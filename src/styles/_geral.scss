@@ -2,7 +2,6 @@ body {
   background-color: $light-beige;
   border: 10px solid $medium-beige;
   color: $gray;
-  // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
   @include device(small) {
     border: none;
   }
@@ -14,7 +13,6 @@ img {
 }
 
 p {
-  // O include está chamando o mixin type-1 responsável por definir o tipo-1 de tamanho da fonte e a fonte.
   @include type-1(18px);
 }
 
@@ -22,13 +20,11 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
   @include device(small) {
     margin-bottom: 40px;
   }
 
   h1 {
-    // O include está chamando o mixin type-1 responsável por definir o tipo-1 de tamanho da fonte e a fonte.
     @include type-1(18px);
     text-transform: uppercase;
   }
@@ -38,7 +34,6 @@ p {
     width: 75%;
     height: 2px;
     background-color: $gray;
-    // O include está chamando o mixin device e passando como parâmetro a palavra small, que faz com que o código dentro do mixin seja executado quando a largura da tela for maior ou igual a 480px e menor ou igual a 759px.
     @include device(medium) {
       width: 60%;
     }
